@@ -6,13 +6,14 @@ import {CheckboxName} from "../../types.ts";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store.ts";
 import {changeCurrency} from "../../redux/CurrencySlice/CurrencySlice.ts";
-import {changeOptions } from "../../redux/TicketsSlice/TicketsSlice.ts";
+import {changeOptions, resetOptions} from "../../redux/TicketsSlice/TicketsSlice.ts";
 import {useState} from "react";
 
 
 export const OptionsCard = () => {
     const options = useSelector((state: RootState) => state.tickets.options) as Record<CheckboxName, boolean>
     const [onlyOption, setOnlyOption] = useState(options.nothing)
+    const [resetChecks, setResetChecks] = useState(false)
     const currency = useSelector((state: RootState) => state.currency.value)
 
     const dispatch = useDispatch()
@@ -36,6 +37,13 @@ export const OptionsCard = () => {
             } else {
                 setOnlyOption(true)
             }
+        }
+        if (nameCheckbox === "all" && statusCheckbox) {
+            dispatch(resetOptions(["nothing", "all", "one", "two", "three"]))
+            setResetChecks(true)
+        }
+        if (nameCheckbox === "all" && !statusCheckbox) {
+            setResetChecks(false)
         }
     }
 
@@ -74,19 +82,19 @@ export const OptionsCard = () => {
                                 [styles["labelNothing"]]:onlyOption
                             }
                         )}>
-                            <input name="nothing" type="checkbox"/>
+                            <input name="nothing" type="checkbox" disabled={resetChecks} checked={resetChecks ? false : undefined} />
                             Без пересадок
                         </label>
                     <label className={styles.label}>
-                        <input name="one" type="checkbox"/>
+                        <input name="one" type="checkbox" disabled={resetChecks} checked={resetChecks ? false : undefined} />
                         1 пересадка
                     </label>
                     <label className={styles.label} >
-                        <input name="two" type="checkbox"/>
+                        <input name="two" type="checkbox" disabled={resetChecks} checked={resetChecks ? false : undefined} />
                         2 пересадки
                     </label>
                     <label className={styles.label} >
-                        <input name="three" type="checkbox"/>
+                        <input name="three" type="checkbox" disabled={resetChecks} checked={resetChecks ? false : undefined} />
                         3 пересадки
                     </label>
 

@@ -1,7 +1,3 @@
-.top_level_card {
-
-}
-
 .btns {
     display: flex;
 }
@@ -47,6 +43,7 @@
     color: white;
     background: #0047dc;
     border: 1px solid #0047dc;
+    transition: background-color 0.2s linear;
 }
 
 .checkboxes {
@@ -89,6 +86,7 @@
 
 .checkboxes :hover{
     background: #97baeb;
+    transition: all 0.3s linear;
     border-left: 10px solid #97baeb;
 
 }
