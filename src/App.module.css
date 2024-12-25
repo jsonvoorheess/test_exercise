@@ -1,0 +1,11 @@
+.main {
+    display: flex;
+    gap: 100px;
+    margin-top: 20px;
+}
+
+.articles {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

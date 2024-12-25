@@ -1,0 +1,90 @@
+.img {
+    width: 200px;
+    height: 120px;
+    object-fit: cover;
+}
+
+
+.btn {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    padding: 10px 20px;
+    border: none;
+    background: #f38018;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    min-width: 160px;
+}
+
+.btn:hover {
+    background: #e89146;
+}
+
+.leftSide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.article {
+    border: 1px solid silver;
+    border-radius: 5px;
+    display: flex;
+    gap: 5px;
+}
+
+.blockInfo {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 30px;
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+.blocksLine {
+    width: 1px;
+    height: 220px;
+    border-right: 1px solid silver;
+}
+
+.timeInfo {
+    text-transform: uppercase;
+    font-size: 35px;
+}
+
+.line {
+    border-bottom: 1px solid #5f5252;
+    width: 100px;
+    height: 1px;
+    border-right: 10px solid black;
+
+}
+
+.countStops {
+    padding-right: 20px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #5f5252;
+}
+
+.planesInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.planeIcon {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.date {
+    color: #5f5252 ;
+}
