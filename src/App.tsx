@@ -31,44 +31,48 @@ export const App = () => {
         fetchData().then((data:{ tickets: Ticket[] }) => {
            dispatch(resetTickets(data.tickets))
         })
+
+    }, [])
+
+    useEffect(() => {
         if (options.nothing) {
             const filteredArray = tickets.filter((ticket) => ticket.stops === 0)
             setTicketsWithoutStops(filteredArray)
         }
         if (!options.nothing) {
-           if (options.one && options.two && options.three) {
-               const filteredArray = tickets.filter((ticket) => ticket.stops > 0 && ticket.stops < 4)
-               setTicketsWithoutStops(filteredArray)
-           }
-           if (options.one || options.two || options.three) {
+            if (options.one && options.two && options.three) {
+                const filteredArray = tickets.filter((ticket) => ticket.stops > 0 && ticket.stops < 4)
+                setTicketsWithoutStops(filteredArray)
+            }
+            if (options.one || options.two || options.three) {
                 const stops = Object.entries(options).filter((opt) => {
                     if (opt[1]) {
                         return CountStops[opt[0] as "one" | "two" | "three"]
                     }
                 })
-               if (stops.length === 1) {
-                   const filteredArray =  tickets.filter((ticket) => ticket.stops === CountStops[stops[0][0] as "one" | "two" | "three"])
-                   setTicketsWithoutStops(filteredArray)
-               } else {
-                   const total = stops.reduce((total, currentValue) => {
-                           total+=CountStops[currentValue[0] as "one" | "two" | "three"]
-                       return total
-                   }, 0)
-                   if (total === 5) {
-                       const filteredArray =  tickets.filter((ticket) => ticket.stops === 2 || ticket.stops === 3)
-                       setTicketsWithoutStops(filteredArray)
-                   }
-                   if (total === 3) {
-                       const filteredArray =  tickets.filter((ticket) => ticket.stops === 1 || ticket.stops === 2)
-                       setTicketsWithoutStops(filteredArray)
-                   }
-                   if (total === 4) {
-                       const filteredArray =  tickets.filter((ticket) => ticket.stops === 1 || ticket.stops === 3)
-                       setTicketsWithoutStops(filteredArray)
-                   }
-               }
+                if (stops.length === 1) {
+                    const filteredArray =  tickets.filter((ticket) => ticket.stops === CountStops[stops[0][0] as "one" | "two" | "three"])
+                    setTicketsWithoutStops(filteredArray)
+                } else {
+                    const total = stops.reduce((total, currentValue) => {
+                        total+=CountStops[currentValue[0] as "one" | "two" | "three"]
+                        return total
+                    }, 0)
+                    if (total === 5) {
+                        const filteredArray =  tickets.filter((ticket) => ticket.stops === 2 || ticket.stops === 3)
+                        setTicketsWithoutStops(filteredArray)
+                    }
+                    if (total === 3) {
+                        const filteredArray =  tickets.filter((ticket) => ticket.stops === 1 || ticket.stops === 2)
+                        setTicketsWithoutStops(filteredArray)
+                    }
+                    if (total === 4) {
+                        const filteredArray =  tickets.filter((ticket) => ticket.stops === 1 || ticket.stops === 3)
+                        setTicketsWithoutStops(filteredArray)
+                    }
+                }
 
-           }
+            }
         }
     }, [options])
 
