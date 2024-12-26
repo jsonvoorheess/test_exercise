@@ -41,6 +41,7 @@ export const OptionsCard = () => {
         if (nameCheckbox === "all" && statusCheckbox) {
             dispatch(resetOptions(["nothing", "all", "one", "two", "three"]))
             setResetChecks(true)
+            setOnlyOption(false)
         }
         if (nameCheckbox === "all" && !statusCheckbox) {
             setResetChecks(false)
