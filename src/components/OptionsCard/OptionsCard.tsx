@@ -75,7 +75,7 @@ export const OptionsCard = () => {
                 <p className={styles.title_card} >Количество пересадок</p>
                 <div className={styles.checkboxes} onClick={(e) => onCheckBoxClick(e)} >
                     <label className={styles.label} >
-                        <input name="all" type="checkbox"/>
+                        <input name="all" type="checkbox" defaultChecked={resetChecks && true} />
                         Все
                     </label>
                         <label className={classNames(styles.label,
@@ -87,7 +87,7 @@ export const OptionsCard = () => {
                             Без пересадок
                         </label>
                     <label className={styles.label}>
-                        <input name="one" type="checkbox" disabled={resetChecks} checked={resetChecks ? false : undefined} />
+                        <input name="one" type="checkbox" disabled={resetChecks}  checked={resetChecks ? false : undefined} />
                         1 пересадка
                     </label>
                     <label className={styles.label} >
