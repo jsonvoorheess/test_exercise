@@ -29,7 +29,11 @@ export const App = () => {
         }
 
         fetchData().then((data:{ tickets: Ticket[] }) => {
-           dispatch(resetTickets(data.tickets))
+            const sortedTickets = data.tickets.sort((a:Ticket,b:Ticket) => {
+                return a.price - b.price
+            })
+            console.log(sortedTickets)
+           dispatch(resetTickets(sortedTickets))
         })
 
     }, [])
