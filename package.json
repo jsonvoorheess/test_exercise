@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build json-server -w public/db.json",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "json-server -w db.json"
+    "server": "json-server -w public/db.json"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
