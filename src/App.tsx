@@ -19,7 +19,7 @@ export const App = () => {
 
     useEffect(() => {
         const fetchData= async () => {
-            const response= await fetch("src/data.json", {
+            const response= await fetch("./src/data.json", {
                 headers: {
                     "Content-Type": "application/json"
                 }
