@@ -19,7 +19,7 @@ export const App = () => {
 
     useEffect(() => {
         const fetchData= async () => {
-            const response= await fetch("./src/data.json", {
+            const response= await fetch("http://localhost:3000/tickets", {
                 headers: {
                     "Content-Type": "application/json"
                 }
@@ -28,8 +28,8 @@ export const App = () => {
             return response.json()
         }
 
-        fetchData().then((data:{ tickets: Ticket[] }) => {
-            const sortedTickets = data.tickets.sort((a:Ticket,b:Ticket) => {
+        fetchData().then((data: Ticket[] ) => {
+            const sortedTickets = data.sort((a:Ticket,b:Ticket) => {
                 return a.price - b.price
             })
             console.log(sortedTickets)
